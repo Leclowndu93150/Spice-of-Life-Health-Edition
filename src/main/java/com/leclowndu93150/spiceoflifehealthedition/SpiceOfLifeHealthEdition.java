@@ -1,15 +1,15 @@
 package com.leclowndu93150.spiceoflifehealthedition;
 
 import com.leclowndu93150.spiceoflifehealthedition.command.ModCommands;
-import com.leclowndu93150.spiceoflifehealthedition.condition.DietEffectEvaluator;
 import com.leclowndu93150.spiceoflifehealthedition.diet.DietAttachment;
 import com.leclowndu93150.spiceoflifehealthedition.diet.DietTracker;
-import com.leclowndu93150.spiceoflifehealthedition.effect.ModEffects;
 import com.leclowndu93150.spiceoflifehealthedition.item.ModItems;
 import com.leclowndu93150.spiceoflifehealthedition.network.NutritionSyncPayload;
 import com.leclowndu93150.spiceoflifehealthedition.nutrition.ModDataMaps;
 import com.leclowndu93150.spiceoflifehealthedition.nutrition.NutritionManager;
 import com.leclowndu93150.spiceoflifehealthedition.nutrition.NutritionReloadListener;
+import com.leclowndu93150.spiceoflifehealthedition.trait.TraitEvaluator;
+import com.leclowndu93150.spiceoflifehealthedition.trait.TraitTickHandler;
 import com.leclowndu93150.spiceoflifehealthedition.weight.ExerciseTracker;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.Registries;
@@ -47,7 +47,6 @@ public class SpiceOfLifeHealthEdition {
     public SpiceOfLifeHealthEdition(IEventBus modEventBus, ModContainer modContainer) {
         CREATIVE_MODE_TABS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
-        ModEffects.MOB_EFFECTS.register(modEventBus);
         DietAttachment.ATTACHMENT_TYPES.register(modEventBus);
 
         modEventBus.addListener(ModDataMaps::register);
@@ -55,7 +54,10 @@ public class SpiceOfLifeHealthEdition {
 
         NeoForge.EVENT_BUS.addListener(DietTracker::onItemUseFinish);
         NeoForge.EVENT_BUS.addListener(DietTracker::onRightClickBlock);
-        NeoForge.EVENT_BUS.addListener(DietEffectEvaluator::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(TraitEvaluator::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(TraitEvaluator::onPlayerLogin);
+        NeoForge.EVENT_BUS.addListener(TraitEvaluator::onPlayerRespawn);
+        NeoForge.EVENT_BUS.addListener(TraitTickHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(ExerciseTracker::onPlayerTick);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> {
             event.addListener(new NutritionReloadListener(event.getServerResources(), event.getRegistryAccess()));

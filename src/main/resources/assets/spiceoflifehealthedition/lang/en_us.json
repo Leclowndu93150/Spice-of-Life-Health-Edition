@@ -2,17 +2,6 @@
   "itemGroup.spiceoflifehealthedition": "Spice of Life: Health Edition",
   "item.spiceoflifehealthedition.guidebook": "Diet Guidebook",
 
-  "effect.spiceoflifehealthedition.diabetes": "Diabetes",
-  "effect.spiceoflifehealthedition.high_cholesterol": "High Cholesterol",
-  "effect.spiceoflifehealthedition.fatigue": "Fatigue",
-  "effect.spiceoflifehealthedition.dehydration": "Dehydration",
-  "effect.spiceoflifehealthedition.scurvy": "Scurvy",
-  "effect.spiceoflifehealthedition.obesity": "Obesity",
-  "effect.spiceoflifehealthedition.well_fed": "Well Fed",
-  "effect.spiceoflifehealthedition.energized": "Energized",
-  "effect.spiceoflifehealthedition.iron_stomach": "Iron Stomach",
-  "effect.spiceoflifehealthedition.vitality": "Vitality",
-
   "tooltip.spiceoflifehealthedition.nutrition": "Nutrition",
   "tooltip.spiceoflifehealthedition.sugar": "Sugar",
   "tooltip.spiceoflifehealthedition.fat": "Fat",
@@ -27,6 +16,91 @@
   "tooltip.spiceoflifehealthedition.weight_label": "Weight:",
   "tooltip.spiceoflifehealthedition.total_label": "Total:",
   "tooltip.spiceoflifehealthedition.weight_impact": "Weight: +%s",
+
+  "trait.spiceoflifehealthedition.muscular": "Muscular",
+  "trait.spiceoflifehealthedition.muscular.desc": "Strong muscles from protein-rich diet",
+  "trait.spiceoflifehealthedition.muscular.effect.1": "+1 damage",
+  "trait.spiceoflifehealthedition.muscular.effect.2": "+2 damage, +2 HP",
+  "trait.spiceoflifehealthedition.muscular.effect.3": "+3 damage, +4 HP, knockback resist",
+
+  "trait.spiceoflifehealthedition.muscle_wasting": "Muscle Wasting",
+  "trait.spiceoflifehealthedition.muscle_wasting.desc": "Body is burning muscle for fuel",
+  "trait.spiceoflifehealthedition.muscle_wasting.effect.1": "-2 damage, slower attacks",
+
+  "trait.spiceoflifehealthedition.energy_reserves": "Energy Reserves",
+  "trait.spiceoflifehealthedition.energy_reserves.desc": "Fat stores provide stamina",
+  "trait.spiceoflifehealthedition.energy_reserves.effect.1": "Reserved stamina",
+  "trait.spiceoflifehealthedition.energy_reserves.effect.2": "+3% speed",
+  "trait.spiceoflifehealthedition.energy_reserves.effect.3": "+5% speed, softer falls",
+
+  "trait.spiceoflifehealthedition.high_cholesterol": "High Cholesterol",
+  "trait.spiceoflifehealthedition.high_cholesterol.desc": "Arteries clogged from fat overload",
+  "trait.spiceoflifehealthedition.high_cholesterol.effect.1": "-5% speed",
+  "trait.spiceoflifehealthedition.high_cholesterol.effect.2": "-10% speed, -2 HP",
+  "trait.spiceoflifehealthedition.high_cholesterol.effect.3": "-15% speed, -4 HP",
+
+  "trait.spiceoflifehealthedition.emaciated": "Emaciated",
+  "trait.spiceoflifehealthedition.emaciated.desc": "Body has no fat reserves",
+  "trait.spiceoflifehealthedition.emaciated.effect.1": "-2 HP",
+
+  "trait.spiceoflifehealthedition.quick_energy": "Quick Energy",
+  "trait.spiceoflifehealthedition.quick_energy.desc": "Sugar gives rapid burst energy",
+  "trait.spiceoflifehealthedition.quick_energy.effect.1": "+5% speed",
+  "trait.spiceoflifehealthedition.quick_energy.effect.2": "+10% speed, +10% mining",
+  "trait.spiceoflifehealthedition.quick_energy.effect.3": "+15% speed, +20% mining",
+
+  "trait.spiceoflifehealthedition.diabetes": "Diabetes",
+  "trait.spiceoflifehealthedition.diabetes.desc": "Blood sugar out of control",
+  "trait.spiceoflifehealthedition.diabetes.effect.1": "-1 damage",
+  "trait.spiceoflifehealthedition.diabetes.effect.2": "-2 damage, -10% speed",
+  "trait.spiceoflifehealthedition.diabetes.effect.3": "-3 damage, gradual damage",
+
+  "trait.spiceoflifehealthedition.balanced_electrolytes": "Balanced Electrolytes",
+  "trait.spiceoflifehealthedition.balanced_electrolytes.desc": "Proper sodium balance",
+  "trait.spiceoflifehealthedition.balanced_electrolytes.effect.1": "Balanced",
+  "trait.spiceoflifehealthedition.balanced_electrolytes.effect.2": "+1 HP",
+  "trait.spiceoflifehealthedition.balanced_electrolytes.effect.3": "+2 HP, +3% speed",
+
+  "trait.spiceoflifehealthedition.hypertension": "Hypertension",
+  "trait.spiceoflifehealthedition.hypertension.desc": "High blood pressure from salt",
+  "trait.spiceoflifehealthedition.hypertension.effect.1": "-5% speed",
+  "trait.spiceoflifehealthedition.hypertension.effect.2": "-10% speed, -2 HP",
+
+  "trait.spiceoflifehealthedition.low_sodium": "Low Sodium",
+  "trait.spiceoflifehealthedition.low_sodium.desc": "Electrolyte imbalance",
+  "trait.spiceoflifehealthedition.low_sodium.effect.1": "-5% speed, -10% mining",
+
+  "trait.spiceoflifehealthedition.healthy_gut": "Healthy Gut",
+  "trait.spiceoflifehealthedition.healthy_gut.desc": "Efficient digestion",
+  "trait.spiceoflifehealthedition.healthy_gut.effect.1": "Stable digestion",
+  "trait.spiceoflifehealthedition.healthy_gut.effect.2": "+1 HP",
+  "trait.spiceoflifehealthedition.healthy_gut.effect.3": "+2 HP",
+
+  "trait.spiceoflifehealthedition.indigestion": "Indigestion",
+  "trait.spiceoflifehealthedition.indigestion.desc": "Sluggish digestion",
+  "trait.spiceoflifehealthedition.indigestion.effect.1": "Slow digestion",
+
+  "trait.spiceoflifehealthedition.well_hydrated": "Well Hydrated",
+  "trait.spiceoflifehealthedition.well_hydrated.desc": "Body is full of water",
+  "trait.spiceoflifehealthedition.well_hydrated.effect.1": "Slow regen",
+  "trait.spiceoflifehealthedition.well_hydrated.effect.2": "Medium regen, +3% speed",
+  "trait.spiceoflifehealthedition.well_hydrated.effect.3": "Fast regen, +5% speed",
+
+  "trait.spiceoflifehealthedition.dehydration": "Dehydration",
+  "trait.spiceoflifehealthedition.dehydration.desc": "Body desperately needs water",
+  "trait.spiceoflifehealthedition.dehydration.effect.1": "Drains hunger",
+  "trait.spiceoflifehealthedition.dehydration.effect.2": "Drains hunger, -10% everything",
+
+  "trait.spiceoflifehealthedition.vitality": "Vitality",
+  "trait.spiceoflifehealthedition.vitality.desc": "Strong immune system",
+  "trait.spiceoflifehealthedition.vitality.effect.1": "Slow regen",
+  "trait.spiceoflifehealthedition.vitality.effect.2": "Medium regen",
+  "trait.spiceoflifehealthedition.vitality.effect.3": "Fast regen, +2 HP",
+
+  "trait.spiceoflifehealthedition.scurvy": "Scurvy",
+  "trait.spiceoflifehealthedition.scurvy.desc": "Severe vitamin deficiency",
+  "trait.spiceoflifehealthedition.scurvy.effect.1": "-2 HP",
+  "trait.spiceoflifehealthedition.scurvy.effect.2": "-2 HP, -2 damage",
 
   "gui.spiceoflifehealthedition.title": "Diet Guidebook",
   "gui.spiceoflifehealthedition.subtitle": "Your nutrition companion",
@@ -46,9 +120,9 @@
   "gui.spiceoflifehealthedition.diet.empty": "You haven't eaten anything yet.",
   "gui.spiceoflifehealthedition.diet.recent_title": "Recent Meals",
 
-  "gui.spiceoflifehealthedition.health.title": "Health Metrics",
-  "gui.spiceoflifehealthedition.health.subtitle": "Green is safe \u2022 Red is dangerous",
-  "gui.spiceoflifehealthedition.health.need_data": "Eat at least 5 meals to see health data.",
+  "gui.spiceoflifehealthedition.health.title": "Health Overview",
+  "gui.spiceoflifehealthedition.health.counts": "%d good \u2022 %d bad",
+  "gui.spiceoflifehealthedition.health.need_data": "No diet data yet.",
 
   "gui.spiceoflifehealthedition.foods.search": "Search foods\u2026",
   "gui.spiceoflifehealthedition.foods.empty": "No foods found.",
@@ -61,27 +135,6 @@
   "gui.spiceoflifehealthedition.body.cat.normal": "Normal",
   "gui.spiceoflifehealthedition.body.cat.overweight": "Overweight",
   "gui.spiceoflifehealthedition.body.cat.obese": "Obese",
-  "gui.spiceoflifehealthedition.body.effects": "Active Modifiers",
-  "gui.spiceoflifehealthedition.body.speed": "Speed %s%%",
-  "gui.spiceoflifehealthedition.body.jump": "Jump %s%%",
-  "gui.spiceoflifehealthedition.body.gravity": "Gravity %s%%",
-  "gui.spiceoflifehealthedition.body.tip": "Sprint, swim, and jump to burn calories.",
-
-  "condition.spiceoflifehealthedition.diabetes.cause": "Too much sugar in your diet",
-  "condition.spiceoflifehealthedition.diabetes.fix": "Reduce sugar, eat more protein and fiber",
-  "condition.spiceoflifehealthedition.high_cholesterol.cause": "Too much fat in your diet",
-  "condition.spiceoflifehealthedition.high_cholesterol.fix": "Reduce fatty foods, eat more vegetables",
-  "condition.spiceoflifehealthedition.fatigue.cause": "Not enough protein and vitamins",
-  "condition.spiceoflifehealthedition.fatigue.fix": "Eat more meat, fish, fruits, and vegetables",
-  "condition.spiceoflifehealthedition.dehydration.cause": "Not enough hydration",
-  "condition.spiceoflifehealthedition.dehydration.fix": "Drink water, eat soups and fruits",
-  "condition.spiceoflifehealthedition.scurvy.cause": "Severe vitamin deficiency",
-  "condition.spiceoflifehealthedition.scurvy.fix": "Eat fruits and vegetables",
-  "condition.spiceoflifehealthedition.obesity.cause": "Excessive caloric intake",
-  "condition.spiceoflifehealthedition.obesity.fix": "Eat less, exercise more",
-
-  "reward.spiceoflifehealthedition.well_fed.desc": "Balanced diet grants bonus health",
-  "reward.spiceoflifehealthedition.energized.desc": "High protein and vitamins boost speed",
-  "reward.spiceoflifehealthedition.iron_stomach.desc": "Diverse diet grants food poison resistance",
-  "reward.spiceoflifehealthedition.vitality.desc": "Good hydration and vitamins grant regeneration"
+  "gui.spiceoflifehealthedition.body.adaptations": "Active Adaptations",
+  "gui.spiceoflifehealthedition.body.no_effects": "No active adaptations"
 }

@@ -9,8 +9,10 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class DietHistory {
@@ -18,7 +20,8 @@ public class DietHistory {
     public static final Codec<DietHistory> CODEC = RecordCodecBuilder.create(i -> i.group(
             DietEntry.CODEC.listOf().fieldOf("entries").forGetter(h -> h.entries),
             Codec.FLOAT.optionalFieldOf("weight", 70f).forGetter(h -> h.weight),
-            Codec.FLOAT.optionalFieldOf("exerciseBuffer", 0f).forGetter(h -> h.exerciseBuffer)
+            Codec.FLOAT.optionalFieldOf("exerciseBuffer", 0f).forGetter(h -> h.exerciseBuffer),
+            Codec.unboundedMap(Codec.STRING, Codec.INT).optionalFieldOf("activeTraits", Map.of()).forGetter(h -> h.activeTraits)
     ).apply(i, DietHistory::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, DietHistory> STREAM_CODEC = new StreamCodec<>() {
@@ -34,7 +37,12 @@ public class DietHistory {
                 long time = buf.readLong();
                 entries.add(new DietEntry(id, profile, time));
             }
-            return new DietHistory(entries, weight, exercise);
+            int traitCount = buf.readVarInt();
+            Map<String, Integer> traits = new HashMap<>(traitCount);
+            for (int j = 0; j < traitCount; j++) {
+                traits.put(buf.readUtf(), buf.readVarInt());
+            }
+            return new DietHistory(entries, weight, exercise, traits);
         }
 
         @Override
@@ -47,22 +55,33 @@ public class DietHistory {
                 NutritionalProfile.STREAM_CODEC.encode(buf, entry.nutrition());
                 buf.writeLong(entry.gameTime());
             }
+            buf.writeVarInt(history.activeTraits.size());
+            for (Map.Entry<String, Integer> e : history.activeTraits.entrySet()) {
+                buf.writeUtf(e.getKey());
+                buf.writeVarInt(e.getValue());
+            }
         }
     };
 
     private final List<DietEntry> entries;
     private float weight;
     private float exerciseBuffer;
+    private final Map<String, Integer> activeTraits;
     private NutritionalProfile cachedCumulative;
 
     public DietHistory() {
-        this(new ArrayList<>(), 70f, 0f);
+        this(new ArrayList<>(), 70f, 0f, new HashMap<>());
     }
 
     public DietHistory(List<DietEntry> entries, float weight, float exerciseBuffer) {
+        this(entries, weight, exerciseBuffer, new HashMap<>());
+    }
+
+    public DietHistory(List<DietEntry> entries, float weight, float exerciseBuffer, Map<String, Integer> activeTraits) {
         this.entries = new ArrayList<>(entries);
         this.weight = weight;
         this.exerciseBuffer = exerciseBuffer;
+        this.activeTraits = new HashMap<>(activeTraits);
         recalcCumulative();
     }
 
@@ -81,6 +100,7 @@ public class DietHistory {
 
     public void clear() {
         entries.clear();
+        activeTraits.clear();
         recalcCumulative();
     }
 
@@ -177,6 +197,15 @@ public class DietHistory {
         gain += profile.fat() * 0.05f;
         gain += profile.sugar() * 0.03f;
         setWeight(weight + gain);
+    }
+
+    public Map<String, Integer> getActiveTraits() {
+        return activeTraits;
+    }
+
+    public void setActiveTraits(Map<String, Integer> traits) {
+        this.activeTraits.clear();
+        this.activeTraits.putAll(traits);
     }
 
     private void recalcCumulative() {

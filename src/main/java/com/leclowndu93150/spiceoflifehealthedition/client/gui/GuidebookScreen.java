@@ -6,6 +6,9 @@ import com.leclowndu93150.spiceoflifehealthedition.client.gui.widget.UiComponent
 import com.leclowndu93150.spiceoflifehealthedition.client.gui.widget.UiTheme;
 import com.leclowndu93150.spiceoflifehealthedition.diet.DietAttachment;
 import com.leclowndu93150.spiceoflifehealthedition.diet.DietHistory;
+import com.leclowndu93150.spiceoflifehealthedition.trait.NutritionalTraits;
+import com.leclowndu93150.spiceoflifehealthedition.trait.Stat;
+import com.leclowndu93150.spiceoflifehealthedition.trait.TraitDefinition;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -207,79 +210,112 @@ public class GuidebookScreen extends Screen {
         }
     }
 
+    private static final float[] STAT_MAX = { 12f, 12f, 10f, 12f, 10f, 12f, 12f };
+
     private void drawHealth(GuiGraphics g) {
         DietHistory history = getDietHistory();
         int x = contentX + 4;
         int y = contentY + 6;
 
-        if (history == null || history.getEntryCount() < 5) {
+        if (history == null) {
             drawEmptyState(g, Component.translatable(P + "health.need_data").getString());
             return;
         }
 
         NutritionalProfile avg = history.getAverage();
-        int diversity = history.getDiversity();
+        Map<String, Integer> active = history.getActiveTraits();
 
         g.drawString(font, Component.translatable(P + "health.title"), x, y, UiTheme.TEXT_PRIMARY, false);
-        y += 12;
 
-        String subtitle = Component.translatable(P + "health.subtitle").getString();
-        g.drawString(font, subtitle, x, y, UiTheme.TEXT_MUTED, false);
-        y += 12;
+        int good = 0, bad = 0;
+        for (Map.Entry<String, Integer> e : active.entrySet()) {
+            TraitDefinition def = NutritionalTraits.byId(e.getKey());
+            if (def == null) continue;
+            if (def.positive()) good++; else bad++;
+        }
+        String counter = Component.translatable(P + "health.counts", good, bad).getString();
+        g.drawString(font, counter, x + contentW - 8 - font.width(counter), y, UiTheme.TEXT_MUTED, false);
+        y += 14;
 
-        HealthMetric[] metrics = {
-                new HealthMetric("diabetes", avg.sugar(), 0, 6, 15, false),
-                new HealthMetric("high_cholesterol", avg.fat(), 0, 5, 15, false),
-                new HealthMetric("fatigue", Math.min(avg.protein(), avg.vitamins()), 1.5f, 5, 10, true),
-                new HealthMetric("dehydration", avg.hydration(), 1, 5, 10, true),
-                new HealthMetric("scurvy", avg.vitamins(), 0.5f, 4, 10, true),
-                new HealthMetric("obesity", avg.total(), 0, 35, 60, false),
-        };
-
-        for (HealthMetric m : metrics) {
-            if (y + 18 > contentY + contentH) break;
-            drawHealthBar(g, x, y, contentW - 8, m);
-            y += 22;
+        Stat[] stats = Stat.values();
+        for (int i = 0; i < stats.length; i++) {
+            Stat stat = stats[i];
+            if (y + 12 > contentY + contentH) break;
+            float value = stat.get(avg);
+            drawStatRow(g, x, y, contentW - 8, stat, value, STAT_MAX[i], active);
+            y += 13;
         }
     }
 
-    private void drawHealthBar(GuiGraphics g, int x, int y, int w, HealthMetric m) {
-        String name = Component.translatable("effect.spiceoflifehealthedition." + m.key).getString();
-        g.drawString(font, name, x, y, UiTheme.TEXT_SECONDARY, false);
+    private void drawStatRow(GuiGraphics g, int x, int y, int w, Stat stat, float value, float max, Map<String, Integer> active) {
+        String name = Component.translatable(TT + stat.id).getString();
+        int statColor = UiTheme.STAT_COLORS[stat.ordinal()];
 
-        String valStr = String.format("%.1f", m.value);
-        g.drawString(font, valStr, x + w - font.width(valStr), y, UiTheme.TEXT_MUTED, false);
-
-        int barY = y + 10;
-        int barH = 6;
-        g.fill(x, barY, x + w, barY + barH, UiTheme.BAR_BG);
-
-        float normalized = Math.min(1f, m.value / m.absMax);
-
-        float safeStart, safeEnd;
-        if (m.higherIsBetter) {
-            safeStart = m.safeMin / m.absMax;
-            safeEnd = 1f;
-        } else {
-            safeStart = 0f;
-            safeEnd = m.safeMax / m.absMax;
+        TraitDefinition positive = null;
+        TraitDefinition negative = null;
+        int positiveLevel = 0;
+        int negativeLevel = 0;
+        for (TraitDefinition def : NutritionalTraits.ALL) {
+            if (def.stat() != stat) continue;
+            Integer level = active.get(def.id());
+            if (level == null) continue;
+            if (def.positive()) {
+                positive = def;
+                positiveLevel = level;
+            } else {
+                negative = def;
+                negativeLevel = level;
+            }
         }
 
-        int safeStartX = x + (int) (safeStart * w);
-        int safeEndX = x + (int) (safeEnd * w);
-        g.fill(safeStartX, barY + 1, safeEndX, barY + barH - 1, 0xFF2A6B42);
+        g.fill(x, y + 1, x + 2, y + 10, statColor);
+        g.drawString(font, name, x + 6, y + 2, UiTheme.TEXT_SECONDARY, false);
 
-        int markerX = x + (int) (normalized * w);
-        markerX = Math.max(x, Math.min(x + w - 2, markerX));
+        int barX = x + 58;
+        int barW = w - 170;
+        int barY = y + 4;
+        int barH = 5;
 
-        boolean inSafe = m.higherIsBetter ? (m.value >= m.safeMin) : (m.value <= m.safeMax);
-        int markerColor = inSafe ? UiTheme.GOOD : UiTheme.BAD;
-        g.fill(markerX - 1, barY - 1, markerX + 2, barY + barH + 1, markerColor);
+        g.fill(barX, barY, barX + barW, barY + barH, UiTheme.BAR_BG);
 
-        int refMark = m.higherIsBetter
-                ? x + (int) ((m.safeMin / m.absMax) * w)
-                : x + (int) ((m.safeMax / m.absMax) * w);
-        g.fill(refMark, barY + barH, refMark + 1, barY + barH + 2, UiTheme.TEXT_DIM);
+        float norm = Math.min(1f, value / max);
+        int filled = (int) (norm * (barW - 2));
+
+        int barColor;
+        if (negative != null) barColor = UiTheme.BAD;
+        else if (positive != null) barColor = UiTheme.GOOD;
+        else barColor = statColor;
+
+        if (filled > 0) {
+            g.fill(barX + 1, barY + 1, barX + 1 + filled, barY + barH - 1, barColor);
+        }
+
+        String valStr = String.format("%.1f", value);
+        g.drawString(font, valStr, barX + barW + 4, y + 2, UiTheme.TEXT_MUTED, false);
+
+        String effectLabel;
+        int effectColor;
+        if (negative != null) {
+            effectLabel = Component.translatable("trait.spiceoflifehealthedition." + negative.id()).getString() + " " + roman(negativeLevel);
+            effectColor = UiTheme.BAD;
+        } else if (positive != null) {
+            effectLabel = Component.translatable("trait.spiceoflifehealthedition." + positive.id()).getString() + " " + roman(positiveLevel);
+            effectColor = UiTheme.GOOD;
+        } else {
+            effectLabel = "\u2014";
+            effectColor = UiTheme.TEXT_DIM;
+        }
+        int labelX = x + w - font.width(effectLabel);
+        g.drawString(font, effectLabel, labelX, y + 2, effectColor, false);
+    }
+
+    private static String roman(int n) {
+        return switch (n) {
+            case 1 -> "I";
+            case 2 -> "II";
+            case 3 -> "III";
+            default -> String.valueOf(n);
+        };
     }
 
     private void drawFoods(GuiGraphics g, int mx, int my) {
@@ -374,12 +410,13 @@ public class GuidebookScreen extends Screen {
     private void drawBody(GuiGraphics g) {
         DietHistory history = getDietHistory();
         float weight = history != null ? history.getWeight() : 70f;
+        Map<String, Integer> active = history != null ? history.getActiveTraits() : Map.of();
 
         int x = contentX + 4;
         int y = contentY + 6;
 
         g.drawString(font, Component.translatable(P + "body.title"), x, y, UiTheme.TEXT_PRIMARY, false);
-        y += 14;
+        y += 12;
 
         String catKey;
         int catColor;
@@ -393,10 +430,10 @@ public class GuidebookScreen extends Screen {
         Component category = Component.translatable(catKey);
         int catW = font.width(category);
         g.drawString(font, category, x + contentW - 8 - catW, y, catColor, false);
-        y += 12;
+        y += 11;
 
         int barW = contentW - 8;
-        int barH = 10;
+        int barH = 8;
         g.fill(x, y, x + barW, y + barH, UiTheme.BAR_BG);
 
         int zone1 = (int) ((60f - 40f) / 160f * barW);
@@ -412,31 +449,38 @@ public class GuidebookScreen extends Screen {
         int markerX = x + (int) (norm * barW);
         g.fill(markerX - 1, y - 2, markerX + 2, y + barH + 2, UiTheme.TEXT_PRIMARY);
 
-        y += barH + 3;
-        g.drawString(font, "40", x, y, UiTheme.TEXT_DIM, false);
-        String mid = "85";
-        g.drawString(font, mid, x + (barW - font.width(mid)) / 2, y, UiTheme.TEXT_DIM, false);
-        g.drawString(font, "200", x + barW - font.width("200"), y, UiTheme.TEXT_DIM, false);
-        y += 14;
+        y += barH + 10;
+        UiComponents.separator(g, x, y - 3, contentW - 8);
 
-        UiComponents.separator(g, x, y, contentW - 8);
-        y += 6;
+        g.drawString(font, Component.translatable(P + "body.adaptations"), x, y, UiTheme.TEXT_PRIMARY, false);
+        y += 11;
 
-        g.drawString(font, Component.translatable(P + "body.effects"), x, y, UiTheme.TEXT_PRIMARY, false);
-        y += 12;
+        boolean anyShown = false;
+        for (TraitDefinition def : NutritionalTraits.ALL) {
+            Integer level = active.get(def.id());
+            if (level == null) continue;
+            if (y + 10 > contentY + contentH) break;
+            drawTraitLine(g, x, y, def, level);
+            y += 10;
+            anyShown = true;
+        }
 
-        float delta = weight - 70f;
-        int[] effectColors = { delta == 0 ? UiTheme.NEUTRAL : (delta > 0 ? UiTheme.BAD : UiTheme.GOOD) };
+        if (!anyShown) {
+            g.drawString(font, Component.translatable(P + "body.no_effects"), x + 4, y, UiTheme.TEXT_DIM, false);
+            y += 10;
+        }
+    }
 
-        String speed = Component.translatable(P + "body.speed", String.format("%+.0f", -delta * 0.2)).getString();
-        g.drawString(font, "\u25B6 " + speed, x, y, effectColors[0], false); y += 11;
-        String jump = Component.translatable(P + "body.jump", String.format("%+.0f", -delta * 0.1)).getString();
-        g.drawString(font, "\u25B6 " + jump, x, y, effectColors[0], false); y += 11;
-        String grav = Component.translatable(P + "body.gravity", String.format("%+.0f", delta * 0.05)).getString();
-        g.drawString(font, "\u25B6 " + grav, x, y, effectColors[0], false); y += 14;
+    private void drawTraitLine(GuiGraphics g, int x, int y, TraitDefinition def, int level) {
+        int color = def.positive() ? UiTheme.GOOD : UiTheme.BAD;
+        String marker = def.positive() ? "\u25B2" : "\u25BC";
+        g.drawString(font, marker, x, y, color, false);
 
-        g.drawString(font, Component.translatable(P + "body.tip").withStyle(net.minecraft.ChatFormatting.ITALIC),
-                x, y, UiTheme.TEXT_MUTED, false);
+        String name = Component.translatable("trait.spiceoflifehealthedition." + def.id()).getString() + " " + roman(level);
+        g.drawString(font, name, x + 8, y, UiTheme.TEXT_SECONDARY, false);
+
+        String desc = Component.translatable("trait.spiceoflifehealthedition." + def.id() + ".effect." + level).getString();
+        g.drawString(font, desc, x + 8 + font.width(name) + 6, y, UiTheme.TEXT_DIM, false);
     }
 
     private void drawEmptyState(GuiGraphics g, String message) {
@@ -538,22 +582,4 @@ public class GuidebookScreen extends Screen {
     }
 
     private record FoodEntry(ResourceLocation id, Item item, NutritionalProfile profile) {}
-
-    private static class HealthMetric {
-        final String key;
-        final float value;
-        final float safeMin;
-        final float safeMax;
-        final float absMax;
-        final boolean higherIsBetter;
-
-        HealthMetric(String key, float value, float safeMin, float safeMax, float absMax, boolean higherIsBetter) {
-            this.key = key;
-            this.value = value;
-            this.safeMin = safeMin;
-            this.safeMax = safeMax;
-            this.absMax = absMax;
-            this.higherIsBetter = higherIsBetter;
-        }
-    }
 }
