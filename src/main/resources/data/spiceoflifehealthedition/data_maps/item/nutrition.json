@@ -1,0 +1,706 @@
+{
+  "values": {
+    "minecraft:sugar": { "sugar": 10.0 },
+    "minecraft:honey_bottle": { "sugar": 8.0, "hydration": 3.0, "vitamins": 1.0 },
+    "minecraft:sweet_berries": { "sugar": 5.0, "fiber": 2.0, "hydration": 1.0, "vitamins": 3.0 },
+    "minecraft:glow_berries": { "sugar": 4.0, "fiber": 2.0, "hydration": 1.0, "vitamins": 4.0 },
+    "minecraft:apple": { "sugar": 4.0, "fiber": 3.0, "hydration": 2.0, "vitamins": 3.0 },
+    "minecraft:golden_apple": { "sugar": 5.0, "fiber": 3.0, "hydration": 2.0, "vitamins": 5.0, "protein": 1.0 },
+    "minecraft:enchanted_golden_apple": { "sugar": 6.0, "fiber": 3.0, "hydration": 2.0, "vitamins": 7.0, "protein": 2.0 },
+    "minecraft:melon_slice": { "sugar": 3.0, "fiber": 1.0, "hydration": 4.0, "vitamins": 2.0 },
+    "minecraft:melon": { "sugar": 3.0, "fiber": 1.0, "hydration": 4.0, "vitamins": 2.0 },
+    "minecraft:chorus_fruit": { "sugar": 2.0, "fiber": 1.0, "hydration": 1.0, "vitamins": 2.0 },
+    "minecraft:beef": { "fat": 4.0, "protein": 8.0, "hydration": 1.0, "vitamins": 1.0 },
+    "minecraft:cooked_beef": { "fat": 3.5, "protein": 9.0, "salt": 0.5, "vitamins": 1.0 },
+    "minecraft:porkchop": { "fat": 5.0, "protein": 7.0, "hydration": 1.0, "vitamins": 1.0 },
+    "minecraft:cooked_porkchop": { "fat": 4.5, "protein": 8.0, "salt": 0.5, "vitamins": 1.0 },
+    "minecraft:chicken": { "fat": 3.0, "protein": 6.0, "hydration": 1.0 },
+    "minecraft:cooked_chicken": { "fat": 2.5, "protein": 7.0, "salt": 0.5, "vitamins": 0.5 },
+    "minecraft:mutton": { "fat": 4.0, "protein": 7.0, "hydration": 1.0, "vitamins": 1.0 },
+    "minecraft:cooked_mutton": { "fat": 3.5, "protein": 8.0, "salt": 0.5, "vitamins": 1.0 },
+    "minecraft:rabbit": { "fat": 2.0, "protein": 7.0, "hydration": 1.0, "vitamins": 1.0 },
+    "minecraft:cooked_rabbit": { "fat": 1.5, "protein": 8.0, "salt": 0.5, "vitamins": 1.0 },
+    "minecraft:cod": { "fat": 1.0, "salt": 1.0, "protein": 6.0, "hydration": 2.0, "vitamins": 2.0 },
+    "minecraft:cooked_cod": { "fat": 1.0, "salt": 1.5, "protein": 7.0, "vitamins": 2.0 },
+    "minecraft:salmon": { "fat": 3.0, "salt": 1.0, "protein": 7.0, "hydration": 2.0, "vitamins": 3.0 },
+    "minecraft:cooked_salmon": { "fat": 3.0, "salt": 1.5, "protein": 8.0, "vitamins": 3.0 },
+    "minecraft:tropical_fish": { "fat": 1.0, "salt": 1.0, "protein": 5.0, "hydration": 2.0, "vitamins": 2.0 },
+    "minecraft:pufferfish": { "fat": 1.0, "salt": 2.0, "protein": 3.0, "hydration": 1.0 },
+    "minecraft:egg": { "fat": 3.0, "salt": 0.5, "protein": 5.0, "vitamins": 2.0 },
+    "minecraft:wheat": { "sugar": 1.0, "fat": 0.5, "protein": 2.0, "fiber": 4.0, "vitamins": 1.0 },
+    "minecraft:carrot": { "sugar": 2.0, "fiber": 3.0, "hydration": 2.0, "vitamins": 5.0, "protein": 0.5 },
+    "minecraft:potato": { "sugar": 1.0, "protein": 1.0, "fiber": 3.0, "hydration": 2.0, "vitamins": 2.0 },
+    "minecraft:baked_potato": { "sugar": 1.5, "protein": 1.5, "fiber": 3.0, "vitamins": 2.0, "salt": 0.5 },
+    "minecraft:poisonous_potato": { "sugar": 0.5, "fiber": 1.0, "hydration": 1.0 },
+    "minecraft:beetroot": { "sugar": 2.0, "fiber": 3.0, "hydration": 2.0, "vitamins": 3.0, "protein": 1.0 },
+    "minecraft:kelp": { "salt": 1.0, "fiber": 1.0, "hydration": 1.0, "vitamins": 2.0 },
+    "minecraft:dried_kelp": { "salt": 2.0, "protein": 1.0, "fiber": 2.0, "vitamins": 4.0 },
+    "minecraft:milk_bucket": { "sugar": 2.0, "fat": 3.0, "protein": 3.0, "hydration": 5.0, "vitamins": 2.0, "salt": 0.5 },
+    "minecraft:cocoa_beans": { "sugar": 3.0, "fat": 2.0, "vitamins": 1.0, "fiber": 1.0 },
+    "minecraft:brown_mushroom": { "protein": 2.0, "fiber": 2.0, "hydration": 2.0, "vitamins": 3.0 },
+    "minecraft:red_mushroom": { "protein": 2.0, "fiber": 2.0, "hydration": 2.0, "vitamins": 3.0 },
+    "minecraft:pumpkin": { "sugar": 2.0, "fiber": 3.0, "hydration": 3.0, "vitamins": 4.0, "protein": 0.5 },
+    "minecraft:rotten_flesh": { "protein": 2.0, "fat": 1.0, "salt": 1.0 },
+    "minecraft:spider_eye": { "protein": 1.0, "vitamins": 1.0 },
+    "minecraft:golden_carrot": { "sugar": 3.0, "fiber": 3.0, "hydration": 2.0, "vitamins": 6.0, "protein": 1.0 },
+    "minecraft:bread": { "sugar": 1.0, "fat": 0.5, "protein": 2.5, "fiber": 4.0, "vitamins": 1.0 },
+    "minecraft:cookie": { "sugar": 6.0, "fat": 3.0, "fiber": 1.0 },
+    "minecraft:pumpkin_pie": { "sugar": 5.0, "fat": 3.0, "fiber": 2.0, "vitamins": 2.0 },
+    "minecraft:mushroom_stew": { "protein": 3.0, "fiber": 3.0, "hydration": 4.0, "vitamins": 4.0 },
+    "minecraft:rabbit_stew": { "protein": 6.0, "fiber": 3.0, "hydration": 4.0, "vitamins": 4.0, "fat": 1.0, "salt": 1.0 },
+    "minecraft:beetroot_soup": { "sugar": 2.0, "fiber": 4.0, "hydration": 5.0, "vitamins": 4.0, "protein": 1.0 },
+    "minecraft:suspicious_stew": { "fiber": 2.0, "hydration": 3.0, "vitamins": 2.0 },
+
+    "farmersdelight:cabbage": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fiber": 4.0, "hydration": 2.0, "vitamins": 3.0, "protein": 1.0 }
+    },
+    "farmersdelight:tomato": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 2.0, "fiber": 2.0, "hydration": 3.0, "vitamins": 4.0 }
+    },
+    "farmersdelight:onion": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fiber": 2.0, "hydration": 1.0, "vitamins": 2.0, "salt": 1.0 }
+    },
+    "farmersdelight:rice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fiber": 3.0, "protein": 2.0, "sugar": 1.0 }
+    },
+    "farmersdelight:rice_panicle": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fiber": 3.0, "protein": 2.0, "sugar": 1.0 }
+    },
+    "farmersdelight:cabbage_leaf": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fiber": 2.0, "hydration": 1.0, "vitamins": 2.0 }
+    },
+    "farmersdelight:pumpkin_slice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 1.0, "fiber": 1.5, "hydration": 1.5, "vitamins": 2.0 }
+    },
+    "farmersdelight:tomato_sauce": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 2.0, "hydration": 2.0, "vitamins": 3.0, "salt": 1.0 }
+    },
+    "farmersdelight:wheat_dough": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 1.0, "fat": 0.5, "protein": 2.0, "fiber": 3.0, "hydration": 1.0 }
+    },
+    "farmersdelight:raw_pasta": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 1.0, "fat": 0.5, "protein": 3.0, "fiber": 3.0 }
+    },
+    "farmersdelight:pie_crust": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 1.0, "fat": 3.0, "fiber": 2.0 }
+    },
+    "farmersdelight:cooking_oil": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 8.0 }
+    },
+    "farmersdelight:milk_bottle": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 1.0, "fat": 2.0, "protein": 2.0, "hydration": 3.0, "vitamins": 1.0 }
+    },
+    "farmersdelight:fried_egg": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 4.0, "protein": 5.5, "salt": 0.5, "vitamins": 2.0 }
+    },
+    "farmersdelight:minced_beef": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 5.0, "protein": 7.0, "salt": 0.5 }
+    },
+    "farmersdelight:beef_patty": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 4.0, "protein": 8.0, "salt": 1.0 }
+    },
+    "farmersdelight:chicken_cuts": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 1.5, "protein": 3.0, "hydration": 0.5 }
+    },
+    "farmersdelight:cooked_chicken_cuts": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 1.5, "protein": 3.5, "salt": 0.5, "vitamins": 0.5 }
+    },
+    "farmersdelight:bacon": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 6.0, "protein": 5.0, "salt": 4.0 }
+    },
+    "farmersdelight:cooked_bacon": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 5.0, "protein": 6.0, "salt": 4.0 }
+    },
+    "farmersdelight:cod_slice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 0.5, "protein": 3.0, "salt": 0.5, "hydration": 1.0, "vitamins": 1.0 }
+    },
+    "farmersdelight:cooked_cod_slice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 0.5, "protein": 3.5, "salt": 1.0, "vitamins": 1.0 }
+    },
+    "farmersdelight:salmon_slice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 1.5, "protein": 3.5, "salt": 0.5, "hydration": 1.0, "vitamins": 1.5 }
+    },
+    "farmersdelight:cooked_salmon_slice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 1.5, "protein": 4.0, "salt": 1.0, "vitamins": 1.5 }
+    },
+    "farmersdelight:mutton_chops": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 2.0, "protein": 3.5, "hydration": 0.5, "vitamins": 0.5 }
+    },
+    "farmersdelight:cooked_mutton_chops": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 2.0, "protein": 4.0, "salt": 0.5, "vitamins": 0.5 }
+    },
+    "farmersdelight:ham": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 5.0, "protein": 8.0, "salt": 3.0 }
+    },
+    "farmersdelight:smoked_ham": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "fat": 4.5, "protein": 9.0, "salt": 3.5 }
+    },
+    "farmersdelight:hot_cocoa": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 4.0, "fat": 2.0, "hydration": 4.0, "vitamins": 1.0 }
+    },
+    "farmersdelight:apple_cider": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 5.0, "hydration": 5.0, "vitamins": 3.0, "fiber": 1.0 }
+    },
+    "farmersdelight:melon_juice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "farmersdelight"}],
+      "value": { "sugar": 4.0, "hydration": 6.0, "vitamins": 2.0 }
+    },
+
+    "croptopia:salt": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "salt": 10.0 }
+    },
+    "croptopia:mountain_salt": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "salt": 10.0 }
+    },
+    "croptopia:butter": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 8.0, "salt": 1.0 }
+    },
+    "croptopia:olive_oil": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 7.0, "vitamins": 1.0 }
+    },
+    "croptopia:flour": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "protein": 2.0, "fiber": 3.0 }
+    },
+    "croptopia:dough": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "protein": 2.0, "fiber": 3.0, "hydration": 1.0 }
+    },
+    "croptopia:noodle": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "protein": 3.0, "fiber": 2.0, "fat": 0.5 }
+    },
+    "croptopia:tortilla": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "fiber": 2.0, "protein": 1.5, "fat": 1.0 }
+    },
+    "croptopia:cheese": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "protein": 4.0, "salt": 2.0, "vitamins": 1.0 }
+    },
+    "croptopia:tofu": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 5.0, "fat": 2.0, "hydration": 1.0, "vitamins": 1.0 }
+    },
+    "croptopia:yoghurt": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 2.0, "fat": 2.0, "protein": 3.0, "hydration": 2.0, "vitamins": 2.0 }
+    },
+    "croptopia:whipping_cream": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 6.0, "sugar": 2.0 }
+    },
+    "croptopia:caramel": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 9.0, "fat": 2.0 }
+    },
+    "croptopia:molasses": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 8.0, "vitamins": 1.0 }
+    },
+    "croptopia:chocolate": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 5.0, "fat": 3.0, "fiber": 1.0, "vitamins": 1.0 }
+    },
+    "croptopia:soy_sauce": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "salt": 6.0, "protein": 1.0 }
+    },
+    "croptopia:soy_milk": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 3.0, "fat": 1.5, "hydration": 4.0, "vitamins": 1.0 }
+    },
+    "croptopia:mustard": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "salt": 3.0, "fat": 1.0, "vitamins": 1.0 }
+    },
+    "croptopia:pepperoni": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "protein": 5.0, "salt": 4.0 }
+    },
+    "croptopia:sausage": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 6.0, "protein": 5.0, "salt": 3.0 }
+    },
+    "croptopia:ground_pork": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "protein": 7.0, "salt": 0.5 }
+    },
+    "croptopia:raw_bacon": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 6.0, "protein": 4.0, "salt": 3.0 }
+    },
+    "croptopia:cooked_bacon": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "protein": 5.0, "salt": 3.5 }
+    },
+    "croptopia:raw_ravager_meat": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "protein": 9.0, "hydration": 1.0 }
+    },
+    "croptopia:cooked_ravager_meat": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 4.5, "protein": 10.0, "salt": 0.5 }
+    },
+    "croptopia:roe": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 2.0, "protein": 4.0, "salt": 2.0, "vitamins": 3.0 }
+    },
+    "croptopia:anchovy": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 5.0, "salt": 2.0, "fat": 1.0, "vitamins": 2.0 }
+    },
+    "croptopia:cooked_anchovy": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 6.0, "salt": 2.5, "fat": 1.0, "vitamins": 2.0 }
+    },
+    "croptopia:tuna": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 8.0, "fat": 2.0, "salt": 1.0, "vitamins": 3.0 }
+    },
+    "croptopia:cooked_tuna": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 9.0, "fat": 2.0, "salt": 1.5, "vitamins": 3.0 }
+    },
+    "croptopia:shrimp": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 6.0, "salt": 1.0, "vitamins": 2.0, "fat": 0.5 }
+    },
+    "croptopia:cooked_shrimp": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 7.0, "salt": 1.5, "vitamins": 2.0, "fat": 0.5 }
+    },
+    "croptopia:clam": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 5.0, "salt": 2.0, "vitamins": 2.0, "fat": 1.0 }
+    },
+    "croptopia:oyster": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 4.0, "salt": 2.0, "vitamins": 3.0, "fat": 1.0 }
+    },
+    "croptopia:crab": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 6.0, "salt": 2.0, "vitamins": 2.0, "fat": 0.5 }
+    },
+    "croptopia:glowing_calamari": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 5.0, "salt": 1.0, "fat": 1.0, "vitamins": 2.0 }
+    },
+    "croptopia:cooked_calamari": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 6.0, "salt": 1.5, "fat": 1.0, "vitamins": 2.0 }
+    },
+    "croptopia:frog_legs": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 5.0, "fat": 1.0, "vitamins": 1.0 }
+    },
+    "croptopia:sea_lettuce": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "vitamins": 4.0, "hydration": 2.0, "salt": 1.0 }
+    },
+
+    "croptopia:banana": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 5.0, "fiber": 2.0, "hydration": 1.0, "vitamins": 3.0, "protein": 1.0 }
+    },
+    "croptopia:mango": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 6.0, "fiber": 2.0, "hydration": 2.0, "vitamins": 5.0 }
+    },
+    "croptopia:avocado": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "fiber": 4.0, "vitamins": 4.0, "protein": 1.0 }
+    },
+    "croptopia:olive": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 4.0, "fiber": 1.0, "vitamins": 2.0, "salt": 1.0 }
+    },
+    "croptopia:grape": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 6.0, "hydration": 2.0, "vitamins": 2.0 }
+    },
+    "croptopia:orange": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 5.0, "hydration": 3.0, "vitamins": 6.0, "fiber": 2.0 }
+    },
+    "croptopia:lemon": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "hydration": 3.0, "vitamins": 6.0 }
+    },
+    "croptopia:lime": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "hydration": 3.0, "vitamins": 5.0 }
+    },
+    "croptopia:coconut": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 6.0, "fiber": 4.0, "hydration": 3.0, "vitamins": 1.0 }
+    },
+    "croptopia:pineapple": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 6.0, "hydration": 3.0, "vitamins": 4.0, "fiber": 2.0 }
+    },
+    "croptopia:cherry": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 5.0, "hydration": 2.0, "vitamins": 3.0, "fiber": 1.0 }
+    },
+    "croptopia:peach": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 5.0, "hydration": 3.0, "vitamins": 3.0, "fiber": 2.0 }
+    },
+    "croptopia:pear": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 4.0, "hydration": 3.0, "vitamins": 2.0, "fiber": 4.0 }
+    },
+    "croptopia:plum": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 5.0, "hydration": 2.0, "vitamins": 3.0, "fiber": 2.0 }
+    },
+    "croptopia:apricot": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "hydration": 2.0, "vitamins": 4.0, "fiber": 2.0 }
+    },
+    "croptopia:fig": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 7.0, "fiber": 3.0, "vitamins": 2.0 }
+    },
+    "croptopia:nectarine": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 4.0, "hydration": 3.0, "vitamins": 3.0, "fiber": 2.0 }
+    },
+    "croptopia:persimmon": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 6.0, "fiber": 3.0, "vitamins": 4.0 }
+    },
+    "croptopia:date": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 9.0, "fiber": 4.0, "vitamins": 1.0 }
+    },
+    "croptopia:dragonfruit": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "hydration": 3.0, "vitamins": 4.0, "fiber": 2.0 }
+    },
+    "croptopia:starfruit": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 2.0, "hydration": 3.0, "vitamins": 5.0, "fiber": 1.0 }
+    },
+    "croptopia:grapefruit": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "hydration": 3.0, "vitamins": 6.0, "fiber": 2.0 }
+    },
+    "croptopia:kumquat": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 4.0, "fiber": 2.0, "vitamins": 4.0 }
+    },
+    "croptopia:kiwi": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "hydration": 2.0, "vitamins": 7.0, "fiber": 2.0 }
+    },
+    "croptopia:cantaloupe": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "hydration": 5.0, "vitamins": 4.0, "fiber": 1.0 }
+    },
+    "croptopia:honeydew": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 4.0, "hydration": 5.0, "vitamins": 2.0, "fiber": 1.0 }
+    },
+    "croptopia:cranberry": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 2.0, "hydration": 2.0, "vitamins": 4.0, "fiber": 3.0 }
+    },
+    "croptopia:blackberry": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "fiber": 4.0, "vitamins": 4.0, "hydration": 1.0 }
+    },
+    "croptopia:blueberry": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 4.0, "fiber": 2.0, "vitamins": 5.0, "hydration": 1.0 }
+    },
+    "croptopia:raspberry": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "fiber": 4.0, "vitamins": 4.0, "hydration": 1.0 }
+    },
+    "croptopia:strawberry": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 5.0, "hydration": 2.0, "vitamins": 5.0, "fiber": 1.0 }
+    },
+    "croptopia:elderberry": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "fiber": 3.0, "vitamins": 6.0 }
+    },
+    "croptopia:currant": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "fiber": 2.0, "vitamins": 5.0, "hydration": 1.0 }
+    },
+
+    "croptopia:peanut": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "protein": 6.0, "fiber": 2.0, "vitamins": 1.0 }
+    },
+    "croptopia:almond": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 5.0, "protein": 4.0, "fiber": 3.0, "vitamins": 2.0 }
+    },
+    "croptopia:cashew": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 4.0, "protein": 4.0, "fiber": 1.0, "vitamins": 1.0, "salt": 0.5 }
+    },
+    "croptopia:walnut": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 6.0, "protein": 3.0, "fiber": 2.0, "vitamins": 2.0 }
+    },
+    "croptopia:pecan": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 6.0, "protein": 2.0, "fiber": 3.0, "vitamins": 1.0 }
+    },
+
+    "croptopia:oat": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 5.0, "protein": 3.0, "sugar": 1.0, "vitamins": 1.0 }
+    },
+    "croptopia:barley": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 4.0, "protein": 2.0, "vitamins": 1.0 }
+    },
+    "croptopia:rice": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "protein": 2.0, "sugar": 1.0 }
+    },
+    "croptopia:corn": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 3.0, "fiber": 3.0, "protein": 2.0, "vitamins": 1.0 }
+    },
+    "croptopia:corn_husk": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 1.0 }
+    },
+    "croptopia:soybean": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 7.0, "fat": 3.0, "fiber": 2.0, "vitamins": 2.0 }
+    },
+    "croptopia:hops": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "vitamins": 1.0 }
+    },
+    "croptopia:coffee_beans": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 1.0, "fiber": 1.0 }
+    },
+    "croptopia:tea_leaves": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 3.0, "hydration": 1.0 }
+    },
+    "croptopia:blackbean": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "protein": 6.0, "fiber": 5.0, "vitamins": 1.0 }
+    },
+    "croptopia:greenbean": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "vitamins": 3.0, "hydration": 1.0, "protein": 1.0 }
+    },
+
+    "croptopia:broccoli": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 4.0, "vitamins": 6.0, "protein": 2.0, "hydration": 1.0 }
+    },
+    "croptopia:spinach": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "vitamins": 7.0, "protein": 2.0, "hydration": 1.0 }
+    },
+    "croptopia:kale": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 4.0, "vitamins": 6.0, "protein": 2.0, "hydration": 1.0 }
+    },
+    "croptopia:lettuce": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 4.0, "vitamins": 2.0 }
+    },
+    "croptopia:cabbage": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 4.0, "hydration": 2.0, "vitamins": 3.0, "protein": 1.0 }
+    },
+    "croptopia:cauliflower": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "vitamins": 4.0, "protein": 2.0, "hydration": 1.0 }
+    },
+    "croptopia:artichoke": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 5.0, "vitamins": 3.0, "protein": 2.0 }
+    },
+    "croptopia:asparagus": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "vitamins": 4.0, "protein": 2.0, "hydration": 1.0 }
+    },
+    "croptopia:celery": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 5.0, "vitamins": 2.0, "salt": 1.0 }
+    },
+    "croptopia:leek": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 1.0, "vitamins": 3.0, "protein": 1.0 }
+    },
+    "croptopia:cucumber": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "hydration": 6.0, "fiber": 1.0, "vitamins": 1.0 }
+    },
+    "croptopia:tomato": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 2.0, "fiber": 2.0, "hydration": 3.0, "vitamins": 4.0 }
+    },
+    "croptopia:tomatillo": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "fiber": 2.0, "hydration": 2.0, "vitamins": 3.0 }
+    },
+    "croptopia:onion": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 1.0, "vitamins": 2.0, "salt": 1.0 }
+    },
+    "croptopia:greenonion": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 1.0, "vitamins": 3.0 }
+    },
+    "croptopia:garlic": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 4.0, "fiber": 1.0, "salt": 0.5 }
+    },
+    "croptopia:ginger": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 4.0, "fiber": 1.0, "hydration": 0.5 }
+    },
+    "croptopia:pepper": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 3.0, "fiber": 1.0 }
+    },
+    "croptopia:bellpepper": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 6.0, "fiber": 2.0, "hydration": 2.0 }
+    },
+    "croptopia:chile_pepper": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 5.0, "fiber": 1.0, "hydration": 1.0 }
+    },
+    "croptopia:eggplant": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "hydration": 2.0, "vitamins": 2.0 }
+    },
+    "croptopia:radish": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 3.0, "vitamins": 3.0 }
+    },
+    "croptopia:turnip": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "hydration": 2.0, "vitamins": 2.0, "protein": 0.5 }
+    },
+    "croptopia:rutabaga": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 3.0, "hydration": 2.0, "vitamins": 2.0, "sugar": 1.0 }
+    },
+    "croptopia:squash": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 2.0, "vitamins": 3.0, "sugar": 1.0 }
+    },
+    "croptopia:spaghetti_squash": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 3.0, "vitamins": 2.0, "sugar": 1.0 }
+    },
+    "croptopia:zucchini": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fiber": 2.0, "hydration": 3.0, "vitamins": 2.0 }
+    },
+    "croptopia:sweetpotato": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 4.0, "fiber": 3.0, "vitamins": 5.0, "hydration": 1.0 }
+    },
+    "croptopia:yam": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 2.0, "fiber": 3.0, "vitamins": 2.0, "protein": 1.0, "hydration": 1.0 }
+    },
+    "croptopia:rhubarb": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 1.0, "fiber": 2.0, "vitamins": 3.0, "hydration": 2.0 }
+    },
+    "croptopia:saguaro": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 2.0, "hydration": 5.0, "vitamins": 1.0 }
+    },
+
+    "croptopia:basil": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 3.0, "fiber": 1.0 }
+    },
+    "croptopia:turmeric": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 5.0, "fiber": 1.0 }
+    },
+    "croptopia:cinnamon": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 2.0, "fiber": 2.0, "sugar": 1.0 }
+    },
+    "croptopia:nutmeg": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 2.0, "fat": 1.0, "fiber": 1.0 }
+    },
+    "croptopia:vanilla": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 2.0, "vitamins": 1.0 }
+    },
+    "croptopia:paprika": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 5.0, "fiber": 1.0 }
+    },
+
+    "croptopia:peanut_butter": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 6.0, "protein": 6.0, "sugar": 2.0, "fiber": 2.0 }
+    },
+    "croptopia:raisins": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "sugar": 8.0, "fiber": 3.0, "vitamins": 1.0 }
+    },
+    "croptopia:salsa": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 4.0, "hydration": 2.0, "salt": 1.0, "fiber": 2.0 }
+    },
+    "croptopia:crema": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "fat": 4.0, "protein": 1.0, "sugar": 1.0 }
+    },
+    "croptopia:ajvar": {
+      "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "croptopia"}],
+      "value": { "vitamins": 4.0, "fiber": 2.0, "salt": 1.0, "fat": 1.0 }
+    }
+  }
+}
