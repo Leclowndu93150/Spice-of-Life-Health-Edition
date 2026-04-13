@@ -12,6 +12,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.HashMap;
@@ -46,10 +49,21 @@ public class ExerciseTracker {
             history.addExercise(0.01f);
         }
         if (player.isSwimming()) {
-            history.addExercise(0.008f);
+            history.addExercise(0.012f);
+        }
+        if (player.swinging) {
+            history.addExercise(0.003f);
         }
 
         float weight = history.getWeight();
+
+        if (weight > BASE_WEIGHT && player.isUnderWater()) {
+            float overweightFactor = (weight - BASE_WEIGHT) / 130.0f;
+            int airLoss = (int) (overweightFactor * 3);
+            if (airLoss > 0 && player.tickCount % 4 == 0) {
+                player.setAirSupply(Math.max(-20, player.getAirSupply() - airLoss));
+            }
+        }
         if (weight > BASE_WEIGHT) {
             float overweightFactor = (weight - BASE_WEIGHT) / 130.0f;
             ExertionState state = exertionStates.computeIfAbsent(player.getUUID(), k -> new ExertionState());
@@ -163,6 +177,31 @@ public class ExerciseTracker {
                 count,
                 look.x * 0.05 + spread, spread, look.z * 0.05 + spread,
                 speed);
+    }
+
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        if (!(event.getPlayer() instanceof ServerPlayer player)) return;
+        if (!Config.enableWeight) return;
+        DietHistory history = player.getData(DietAttachment.DIET);
+        history.addExercise(0.015f);
+        player.setData(DietAttachment.DIET, history);
+    }
+
+    public static void onItemFished(ItemFishedEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        if (!Config.enableWeight) return;
+        DietHistory history = player.getData(DietAttachment.DIET);
+        history.addExercise(0.02f);
+        player.setData(DietAttachment.DIET, history);
+    }
+
+    public static void onLivingDeath(LivingDeathEvent event) {
+        if (event.getSource().getEntity() instanceof ServerPlayer player) {
+            if (!Config.enableWeight) return;
+            DietHistory history = player.getData(DietAttachment.DIET);
+            history.addExercise(0.03f);
+            player.setData(DietAttachment.DIET, history);
+        }
     }
 
     private static class ExertionState {

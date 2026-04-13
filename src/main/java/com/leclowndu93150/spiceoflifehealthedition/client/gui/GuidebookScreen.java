@@ -39,7 +39,8 @@ public class GuidebookScreen extends Screen {
         DIET("diet", "\u2630"),
         HEALTH("health", "\u2764"),
         FOODS("foods", "\u25A6"),
-        BODY("body", "\u25EF");
+        BODY("body", "\u25EF"),
+        EXERCISE("exercise", "\u2191");
 
         final String key;
         final String icon;
@@ -104,6 +105,7 @@ public class GuidebookScreen extends Screen {
             case HEALTH -> drawHealth(g);
             case FOODS -> drawFoods(g, mx, my);
             case BODY -> drawBody(g);
+            case EXERCISE -> drawExercise(g);
         }
         g.disableScissor();
     }
@@ -399,7 +401,8 @@ public class GuidebookScreen extends Screen {
         UiComponents.separator(g, x, y, contentW - 16);
         y += 6;
 
-        float weightImpact = profile.total() * 0.1f + profile.fat() * 0.05f + profile.sugar() * 0.03f;
+        float weightImpact = profile.fat() * 0.06f + profile.sugar() * 0.04f + profile.protein() * 0.02f
+                + profile.salt() * 0.01f - profile.fiber() * 0.02f - profile.vitamins() * 0.01f - profile.hydration() * 0.01f;
         String wi = Component.translatable(P + "foods.weight_impact", String.format("%.1f", weightImpact)).getString();
         g.drawString(font, wi, x, y, UiTheme.TEXT_MUTED, false);
         y += 10;
@@ -481,6 +484,76 @@ public class GuidebookScreen extends Screen {
 
         String desc = Component.translatable("trait.spiceoflifehealthedition." + def.id() + ".effect." + level).getString();
         g.drawString(font, desc, x + 8 + font.width(name) + 6, y, UiTheme.TEXT_DIM, false);
+    }
+
+    private static final int ACTIVITY_COLOR = 0xFF5EC870;
+    private static final int ACTIVITY_DIM = 0xFF2A5A30;
+
+    private void drawExercise(GuiGraphics g) {
+        DietHistory history = getDietHistory();
+        float weight = history != null ? history.getWeight() : 70f;
+        int x = contentX + 4;
+        int y = contentY + 6;
+
+        g.drawString(font, Component.translatable(P + "exercise.title"), x, y, UiTheme.TEXT_PRIMARY, false);
+        y += 14;
+
+        y = UiComponents.drawWrappedText(g, font, Component.translatable(P + "exercise.desc"),
+                x, y, contentW - 8, UiTheme.TEXT_SECONDARY);
+        y += 8;
+
+        UiComponents.separator(g, x, y, contentW - 8);
+        y += 6;
+
+        g.drawString(font, Component.translatable(P + "exercise.activities"), x, y, UiTheme.TEXT_PRIMARY, false);
+        y += 12;
+
+        String[][] activities = {
+                {"\u2B06", Component.translatable(P + "exercise.sprint").getString(), "+++"},
+                {"\u2B06", Component.translatable(P + "exercise.swim").getString(), "+++"},
+                {"\u26CF", Component.translatable(P + "exercise.mine").getString(), "++"},
+                {"\u2694", Component.translatable(P + "exercise.kill").getString(), "++"},
+                {"\u2604", Component.translatable(P + "exercise.fish").getString(), "+"},
+                {"\u270B", Component.translatable(P + "exercise.swing").getString(), "+"},
+        };
+
+        for (String[] act : activities) {
+            g.drawString(font, act[0], x + 2, y, ACTIVITY_COLOR, false);
+            g.drawString(font, act[1], x + 16, y, UiTheme.TEXT_SECONDARY, false);
+
+            int intensity = act[2].length();
+            int dotX = x + contentW - 30;
+            for (int i = 0; i < 3; i++) {
+                int color = i < intensity ? ACTIVITY_COLOR : ACTIVITY_DIM;
+                g.fill(dotX + i * 8, y + 2, dotX + i * 8 + 5, y + 7, color);
+            }
+            y += 12;
+        }
+
+        y += 4;
+        UiComponents.separator(g, x, y, contentW - 8);
+        y += 6;
+
+        g.drawString(font, Component.translatable(P + "exercise.weight_effects"), x, y, UiTheme.TEXT_PRIMARY, false);
+        y += 12;
+
+        if (weight > 70f) {
+            float overweightFactor = (weight - 70f) / 130f;
+            String staminaStr = Component.translatable(P + "exercise.stamina_penalty",
+                    String.format("%.0f%%", overweightFactor * 200f)).getString();
+            g.drawString(font, staminaStr, x + 4, y, UiTheme.BAD, false);
+            y += 11;
+
+            String airStr = Component.translatable(P + "exercise.air_penalty").getString();
+            g.drawString(font, airStr, x + 4, y, UiTheme.BAD, false);
+            y += 11;
+
+            String speedStr = Component.translatable(P + "exercise.speed_penalty",
+                    String.format("%.1f%%", (weight - 70f) * 0.2f)).getString();
+            g.drawString(font, speedStr, x + 4, y, UiTheme.BAD, false);
+        } else {
+            g.drawString(font, Component.translatable(P + "exercise.no_penalties"), x + 4, y, UiTheme.GOOD, false);
+        }
     }
 
     private void drawEmptyState(GuiGraphics g, String message) {

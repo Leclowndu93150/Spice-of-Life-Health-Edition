@@ -59,6 +59,9 @@ public class SpiceOfLifeHealthEdition {
         NeoForge.EVENT_BUS.addListener(TraitEvaluator::onPlayerRespawn);
         NeoForge.EVENT_BUS.addListener(TraitTickHandler::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(ExerciseTracker::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(ExerciseTracker::onBlockBreak);
+        NeoForge.EVENT_BUS.addListener(ExerciseTracker::onItemFished);
+        NeoForge.EVENT_BUS.addListener(ExerciseTracker::onLivingDeath);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> {
             event.addListener(new NutritionReloadListener(event.getServerResources(), event.getRegistryAccess()));
         });

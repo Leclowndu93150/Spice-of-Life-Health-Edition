@@ -29,7 +29,7 @@
 
   "trait.spiceoflifehealthedition.energy_reserves": "Energy Reserves",
   "trait.spiceoflifehealthedition.energy_reserves.desc": "Fat stores provide stamina",
-  "trait.spiceoflifehealthedition.energy_reserves.effect.1": "Reserved stamina",
+  "trait.spiceoflifehealthedition.energy_reserves.effect.1": "+1 HP",
   "trait.spiceoflifehealthedition.energy_reserves.effect.2": "+3% speed",
   "trait.spiceoflifehealthedition.energy_reserves.effect.3": "+5% speed, softer falls",
 
@@ -78,7 +78,7 @@
 
   "trait.spiceoflifehealthedition.indigestion": "Indigestion",
   "trait.spiceoflifehealthedition.indigestion.desc": "Sluggish digestion",
-  "trait.spiceoflifehealthedition.indigestion.effect.1": "Slow digestion",
+  "trait.spiceoflifehealthedition.indigestion.effect.1": "Drains hunger",
 
   "trait.spiceoflifehealthedition.well_hydrated": "Well Hydrated",
   "trait.spiceoflifehealthedition.well_hydrated.desc": "Body is full of water",
@@ -136,5 +136,21 @@
   "gui.spiceoflifehealthedition.body.cat.overweight": "Overweight",
   "gui.spiceoflifehealthedition.body.cat.obese": "Obese",
   "gui.spiceoflifehealthedition.body.adaptations": "Active Adaptations",
-  "gui.spiceoflifehealthedition.body.no_effects": "No active adaptations"
+  "gui.spiceoflifehealthedition.body.no_effects": "No active adaptations",
+
+  "gui.spiceoflifehealthedition.tab.exercise": "Exercise",
+  "gui.spiceoflifehealthedition.exercise.title": "Exercise & Activities",
+  "gui.spiceoflifehealthedition.exercise.desc": "Stay active to burn calories and lose weight. The heavier you are, the harder activities become - but they also burn more.",
+  "gui.spiceoflifehealthedition.exercise.activities": "Activities That Burn Calories",
+  "gui.spiceoflifehealthedition.exercise.sprint": "Sprinting",
+  "gui.spiceoflifehealthedition.exercise.swim": "Swimming",
+  "gui.spiceoflifehealthedition.exercise.mine": "Mining blocks",
+  "gui.spiceoflifehealthedition.exercise.kill": "Slaying mobs",
+  "gui.spiceoflifehealthedition.exercise.fish": "Fishing",
+  "gui.spiceoflifehealthedition.exercise.swing": "Swinging arms",
+  "gui.spiceoflifehealthedition.exercise.weight_effects": "Weight Penalties",
+  "gui.spiceoflifehealthedition.exercise.stamina_penalty": "Stamina drains %s faster",
+  "gui.spiceoflifehealthedition.exercise.air_penalty": "Air depletes faster underwater",
+  "gui.spiceoflifehealthedition.exercise.speed_penalty": "Movement -%s slower",
+  "gui.spiceoflifehealthedition.exercise.no_penalties": "You're at a healthy weight!"
 }
