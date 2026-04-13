@@ -193,9 +193,13 @@ public class DietHistory {
     }
 
     public void addWeightFromFood(NutritionalProfile profile) {
-        float gain = profile.total() * 0.1f;
-        gain += profile.fat() * 0.05f;
-        gain += profile.sugar() * 0.03f;
+        float gain = profile.fat() * 0.06f;
+        gain += profile.sugar() * 0.04f;
+        gain += profile.protein() * 0.02f;
+        gain += profile.salt() * 0.01f;
+        gain -= profile.fiber() * 0.02f;
+        gain -= profile.vitamins() * 0.01f;
+        gain -= profile.hydration() * 0.01f;
         setWeight(weight + gain);
     }
 

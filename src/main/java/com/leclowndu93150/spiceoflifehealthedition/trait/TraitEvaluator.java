@@ -58,7 +58,9 @@ public class TraitEvaluator {
         Map<TraitDefinition, TraitTier> tiers = new HashMap<>();
 
         for (TraitDefinition def : NutritionalTraits.ALL) {
-            float value = def.stat().get(avg);
+            if (!isTraitEnabled(def)) continue;
+
+            float value = def.stat().get(avg) * (float) Config.conditionThresholdMultiplier;
             TraitTier tier = def.getTierForValue(value);
             if (tier == null) continue;
 
@@ -79,12 +81,24 @@ public class TraitEvaluator {
             TraitDefinition positive = bestPositive.get(stat);
             TraitDefinition negative = bestNegative.get(stat);
             if (positive != null && negative == null) {
-                result.put(positive.id(), tiers.get(positive).level());
+                if (Config.enableRewards) {
+                    result.put(positive.id(), tiers.get(positive).level());
+                }
             } else if (negative != null) {
                 result.put(negative.id(), tiers.get(negative).level());
             }
         }
         return result;
+    }
+
+    private static boolean isTraitEnabled(TraitDefinition def) {
+        return switch (def.id()) {
+            case "diabetes" -> Config.enableDiabetes;
+            case "high_cholesterol" -> Config.enableCholesterol;
+            case "dehydration" -> Config.enableDehydration;
+            case "scurvy" -> Config.enableScurvy;
+            default -> true;
+        };
     }
 
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {

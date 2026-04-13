@@ -4,6 +4,7 @@ import com.leclowndu93150.spiceoflifehealthedition.SpiceOfLifeHealthEdition;
 import com.leclowndu93150.spiceoflifehealthedition.api.NutritionalProfile;
 import com.leclowndu93150.spiceoflifehealthedition.client.NutritionClientCache;
 import com.leclowndu93150.spiceoflifehealthedition.nutrition.NutritionManager;
+import com.leclowndu93150.spiceoflifehealthedition.nutrition.NutritionReloadListener;
 import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -70,6 +71,13 @@ public record NutritionSyncPayload(Map<ResourceLocation, NutritionalProfile> dat
             LOGGER.info("[SpiceOfLife] Sending nutrition data to {} on datapack sync", event.getPlayer().getName().getString());
             sendToPlayer(event.getPlayer());
         } else {
+            if (NutritionReloadListener.consumePending()) {
+                LOGGER.info("[SpiceOfLife] Datapack reload complete - recomputing nutrition");
+                NutritionManager.get().recompute(
+                        event.getPlayerList().getServer().getRecipeManager(),
+                        event.getPlayerList().getServer().registryAccess()
+                );
+            }
             LOGGER.info("[SpiceOfLife] Broadcasting nutrition data to all players on reload");
             PacketDistributor.sendToAllPlayers(new NutritionSyncPayload(NutritionManager.get().getCacheByKey()));
         }

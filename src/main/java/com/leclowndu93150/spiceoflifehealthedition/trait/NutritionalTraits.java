@@ -38,8 +38,11 @@ public class NutritionalTraits {
     public static final TraitDefinition ENERGY_RESERVES = new TraitDefinition(
             "energy_reserves", Stat.FAT, true, true, 0xF5E45C,
             List.of(
-                    new TraitTier(1, 2.0f, List.of()),
+                    new TraitTier(1, 2.0f, List.of(
+                            AttributeEffect.add(Attributes.MAX_HEALTH, 1.0, "health")
+                    )),
                     new TraitTier(2, 3.5f, List.of(
+                            AttributeEffect.add(Attributes.MAX_HEALTH, 1.0, "health"),
                             AttributeEffect.mulTotal(Attributes.MOVEMENT_SPEED, 0.03, "speed")
                     )),
                     new TraitTier(3, 5.0f, List.of(
@@ -164,7 +167,8 @@ public class NutritionalTraits {
     public static final TraitDefinition INDIGESTION = new TraitDefinition(
             "indigestion", Stat.FIBER, false, false, 0x6B5B45,
             List.of(
-                    new TraitTier(1, 1.0f, List.of())
+                    new TraitTier(1, 1.0f, List.of(),
+                            TickBehavior.every(60, (player, level) -> player.causeFoodExhaustion(0.5f)))
             )
     );
 

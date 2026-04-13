@@ -4,12 +4,19 @@ import com.leclowndu93150.spiceoflifehealthedition.Config;
 import com.leclowndu93150.spiceoflifehealthedition.SpiceOfLifeHealthEdition;
 import com.leclowndu93150.spiceoflifehealthedition.diet.DietAttachment;
 import com.leclowndu93150.spiceoflifehealthedition.diet.DietHistory;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class ExerciseTracker {
 
@@ -20,6 +27,14 @@ public class ExerciseTracker {
     private static final ResourceLocation UNDERWEIGHT_HEALTH = ResourceLocation.fromNamespaceAndPath(SpiceOfLifeHealthEdition.MODID, "weight.underweight_health");
 
     private static final float BASE_WEIGHT = 70f;
+    private static final float EXERTION_SPRINT_RATE = 0.2f;
+    private static final float EXERTION_JUMP_SPIKE = 3.0f;
+    private static final float EXERTION_DECAY = 0.15f;
+    private static final float EXERTION_BREATH_THRESHOLD = 30.0f;
+    private static final float MAX_EXERTION = 100.0f;
+    private static final ResourceLocation EXHAUSTED_JUMP = ResourceLocation.fromNamespaceAndPath(SpiceOfLifeHealthEdition.MODID, "weight.exhausted_jump");
+
+    private static final Map<UUID, ExertionState> exertionStates = new HashMap<>();
 
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
@@ -34,15 +49,56 @@ public class ExerciseTracker {
             history.addExercise(0.008f);
         }
 
+        float weight = history.getWeight();
+        if (weight > BASE_WEIGHT) {
+            float overweightFactor = (weight - BASE_WEIGHT) / 130.0f;
+            ExertionState state = exertionStates.computeIfAbsent(player.getUUID(), k -> new ExertionState());
+
+            if (player.isSprinting()) {
+                state.exertion += EXERTION_SPRINT_RATE * (1.0f + overweightFactor * 2.0f);
+            }
+
+            boolean wasOnGround = state.wasOnGround;
+            if (!player.onGround() && wasOnGround) {
+                state.exertion += EXERTION_JUMP_SPIKE * (1.0f + overweightFactor * 3.0f);
+            }
+            state.wasOnGround = player.onGround();
+
+            if (!player.isSprinting() && player.onGround()) {
+                state.exertion -= EXERTION_DECAY;
+            }
+
+            state.exertion = Math.max(0, Math.min(MAX_EXERTION, state.exertion));
+
+            if (state.exertion >= MAX_EXERTION) {
+                player.setSprinting(false);
+                state.sprintCooldown = 60;
+            }
+
+            if (state.sprintCooldown > 0) {
+                state.sprintCooldown--;
+                player.setSprinting(false);
+                setModifier(player, Attributes.JUMP_STRENGTH, EXHAUSTED_JUMP,
+                        -1.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+            } else {
+                removeModifier(player, Attributes.JUMP_STRENGTH, EXHAUSTED_JUMP);
+            }
+
+            if (state.exertion > EXERTION_BREATH_THRESHOLD && player.tickCount % 4 == 0) {
+                float intensity = (state.exertion - EXERTION_BREATH_THRESHOLD) / (MAX_EXERTION - EXERTION_BREATH_THRESHOLD);
+                spawnBreathParticles(player, intensity);
+            }
+        }
+
         if (player.tickCount % 200 == 0) {
             float exercised = history.consumeExerciseBuffer();
             if (exercised > 0) {
                 history.setWeight(history.getWeight() - exercised * 0.1f);
             }
 
-            float weight = history.getWeight();
-            float drift = (BASE_WEIGHT - weight) * 0.001f;
-            history.setWeight(weight + drift);
+            float currentWeight = history.getWeight();
+            float drift = (BASE_WEIGHT - currentWeight) * 0.001f;
+            history.setWeight(currentWeight + drift);
 
             player.setData(DietAttachment.DIET, history);
 
@@ -89,5 +145,29 @@ public class ExerciseTracker {
         if (instance != null) {
             instance.removeModifier(id);
         }
+    }
+
+    private static void spawnBreathParticles(ServerPlayer player, float intensity) {
+        ServerLevel level = player.serverLevel();
+        Vec3 look = player.getLookAngle();
+        double mouthX = player.getX() + look.x * 0.3;
+        double mouthY = player.getEyeY() - 0.1;
+        double mouthZ = player.getZ() + look.z * 0.3;
+
+        int count = intensity > 0.6f ? 2 : 1;
+        float spread = 0.02f + intensity * 0.03f;
+        float speed = 0.01f + intensity * 0.03f;
+
+        level.sendParticles(ParticleTypes.WHITE_SMOKE,
+                mouthX, mouthY, mouthZ,
+                count,
+                look.x * 0.05 + spread, spread, look.z * 0.05 + spread,
+                speed);
+    }
+
+    private static class ExertionState {
+        float exertion;
+        int sprintCooldown;
+        boolean wasOnGround = true;
     }
 }

@@ -1,6 +1,7 @@
 package com.leclowndu93150.spiceoflifehealthedition.nutrition;
 
 import com.leclowndu93150.spiceoflifehealthedition.api.NutritionalProfile;
+import com.leclowndu93150.spiceoflifehealthedition.compat.FarmersDelightCompat;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -70,7 +71,7 @@ public class NutritionManager {
 
             List<Ingredient> nonEmpty = new ArrayList<>();
             for (Ingredient ing : ingredients) {
-                if (ing.getItems().length > 0) {
+                if (!ing.isEmpty()) {
                     nonEmpty.add(ing);
                 }
             }
@@ -127,6 +128,10 @@ public class NutritionManager {
             if (!progress) break;
         }
 
+        if (FarmersDelightCompat.isLoaded()) {
+            resolveFeastBlocks();
+        }
+
         for (Map.Entry<Item, NutritionalProfile> e : cache.entrySet()) {
             ResourceLocation key = BuiltInRegistries.ITEM.getKey(e.getKey());
             if (key != null) {
@@ -167,6 +172,27 @@ public class NutritionManager {
         }
 
         return ResolveResult.UNRESOLVED;
+    }
+
+    private void resolveFeastBlocks() {
+        for (Map.Entry<ResourceLocation, FarmersDelightCompat.FeastMapping> entry : FarmersDelightCompat.getAllFeastMappings().entrySet()) {
+            Optional<Item> blockOpt = BuiltInRegistries.ITEM.getOptional(entry.getKey());
+            if (blockOpt.isEmpty()) continue;
+
+            NutritionalProfile blockNutrition = cache.get(blockOpt.get());
+            if (blockNutrition == null || blockNutrition.isEmpty()) continue;
+
+            FarmersDelightCompat.FeastMapping mapping = entry.getValue();
+            Optional<Item> servingOpt = BuiltInRegistries.ITEM.getOptional(mapping.servingItem());
+            if (servingOpt.isEmpty()) continue;
+
+            if (!cache.containsKey(servingOpt.get())) {
+                NutritionalProfile perServing = blockNutrition.divide(mapping.servings());
+                cache.put(servingOpt.get(), perServing);
+                LOGGER.info("[SpiceOfLife] Feast block {} -> {} ({} servings, per-serving total={})",
+                        entry.getKey(), mapping.servingItem(), mapping.servings(), perServing.total());
+            }
+        }
     }
 
     private static final Set<String> COOKING_RECIPE_TYPES = Set.of(

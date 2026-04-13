@@ -13,6 +13,7 @@ public class NutritionReloadListener implements PreparableReloadListener {
 
     private final ReloadableServerResources serverResources;
     private final RegistryAccess registryAccess;
+    private static boolean pendingRecompute;
 
     public NutritionReloadListener(ReloadableServerResources serverResources, RegistryAccess registryAccess) {
         this.serverResources = serverResources;
@@ -28,11 +29,22 @@ public class NutritionReloadListener implements PreparableReloadListener {
                                            Executor gameExecutor) {
         return CompletableFuture.supplyAsync(() -> null, backgroundExecutor)
                 .thenCompose(barrier::wait)
-                .thenAcceptAsync(unused -> {
-                    NutritionManager.get().recompute(
-                            serverResources.getRecipeManager(),
-                            registryAccess
-                    );
-                }, gameExecutor);
+                .thenAcceptAsync(unused -> pendingRecompute = true, gameExecutor);
+    }
+
+    public static boolean consumePending() {
+        if (pendingRecompute) {
+            pendingRecompute = false;
+            return true;
+        }
+        return false;
+    }
+
+    public ReloadableServerResources getServerResources() {
+        return serverResources;
+    }
+
+    public RegistryAccess getRegistryAccess() {
+        return registryAccess;
     }
 }
